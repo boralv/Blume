@@ -1,6 +1,6 @@
 // ERROR: No 'Access-Control-Allow-Origin' header is present on the requested resource
 /*
-var url = 'https://blumlinge2.herokuapp.com/api/smallbouquet/?format=json';
+var url = 'https://blumlinge2.herokuapp.com/api/smallbouquet/';
 var xhttp = new XMLHttpRequest();
 xhttp.open("GET", url);
 xhttp.onreadystatechange = () => {
