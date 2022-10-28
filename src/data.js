@@ -382,3 +382,5 @@ var data =
         "species": "NEXT"
     }
 ]
+
+export default data;

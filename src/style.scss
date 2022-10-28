@@ -30,6 +30,11 @@ body {
   padding: 2em 2em 1.2em;
   border-bottom: $hr;
   margin: 0;
+  cursor: pointer;
+}
+
+.wooo {
+  border: 2px outset rgba(255, 167, 38, .3);
 }
 
 .main,
@@ -45,6 +50,7 @@ body {
   color: rgb(100, 100, 100);
   font-weight: bold;
   font-size: 0.95rem;
+  text-shadow: 1px 1px rgba(116, 116, 116, 0.1);
 }
 
 .dropdown-arrow {
@@ -66,8 +72,15 @@ body {
   transform: rotate(45deg);
 }
 
-#cards:hover > .card::after {
-  opacity: 1;
+.container {
+  padding: 0.25em 2.25em;
+  cursor: pointer;
+}
+
+footer {
+  font-size: 0.9rem;
+  color:rgba(100, 100, 100, 0.7);
+  padding: 0.5em 0 2em;
 }
 
 .v-enter-active,
@@ -80,11 +93,29 @@ body {
   opacity: 0;
 }
 
-@media screen and (max-width: 750px) {
-  .categories-title, .categories-list {
-    overflow: hidden;
+@media screen and (max-width: 900px) {
+
+  .empty {
+    display: none;
   }
+}
+
+@media screen and (max-width: 750px) {
+  
   .lighter {
     padding: 0.5em;
-  } 
+  }
+  
+  .container {
+    padding: 0 0 0 0.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .flowers-sort .dropdown-arrow {
+    position: absolute;
+    top: 5px;
+    left: 0;
+  }
 }

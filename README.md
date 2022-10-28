@@ -1,6 +1,6 @@
 # Blume
 
-This template should help get you started developing with Vue 3 in Vite.
+This project was developed using Vue 3 in Vite and [Sass](https://sass-lang.com/).
 
 ## Recommended IDE Setup
 
