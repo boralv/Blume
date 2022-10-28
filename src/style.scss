@@ -1,0 +1,54 @@
+$bg-color: rgba(128, 128, 128, 0.16);
+$hr: 2px solid $bg-color;
+
+body {
+    background-color: $bg-color;
+    height: 100vh;
+    min-width: 320px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Helvetica, sans-serif;
+}
+
+#app {
+    background-color: #ffffff;
+    width: 96%;
+    height: 96%;
+    margin: 0;
+    padding: 0;
+    border-radius: 20px;
+}
+
+.main-header {
+    font-size: 1.22rem;
+    font-weight: bold;
+    padding: 2em 2em 1.2em;
+    border-bottom: $hr;
+    margin: 0;
+}
+
+.main, .filters, .price-range {
+    display: flex;
+    flex-direction: column;
+}
+
+.lighter {
+    padding: 0.8em 2.4em;
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 300ms linear;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
