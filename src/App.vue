@@ -21,15 +21,32 @@
           <span class="price-title lighter">Price Range</span>
           <div class="price-slider">
             <input data-role="doubleslider" class="ultra-thin cycle-marker" data-min="1" data-max="10"
-              data-value-min="2" data-value-max="7" data-hint-position-min="bottom" data-hint-position-max="bottom"
-              data-hint-always="true" data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold"
-              data-on-move="$('.hint').each(function() {var str = $(this).html();if(!str.includes('$')){$(this).html('$' + str);}});" />
+            data-hint-position-min="bottom" data-hint-position-max="bottom"
+            data-hint-always="true" data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold"
+            data-on-move="$('.hint').each(function() {var str = $(this).html();if(!str.includes('$')){$(this).html('$' + str);}});" />
           </div>
         </div>
       </div>
       <div class="content">
-        <div class="flowers-title"></div>
-        <div class="flowers-grid"></div>
+        <div class="flowers-title">
+            <h2 class="flowers-header">New Arrivals</h2>
+          <div class="flowers-sort" @click="drop()">
+            <span class="dropdown-title lighter">Sort by Price</span>
+            <span class="dropdown-arrow" :class="[isDropped ? 'up' : 'down']"></span>
+          </div>
+        </div>
+        <div class="flowers-grid" id="cards">
+          <div class="flower">
+            <div class="card-content"></div>
+          </div>
+          <div class="flower">
+            <div class="card-content"></div>
+          </div>
+          <div class="flower"></div>
+          <div class="flower"></div>
+          <div class="flower"></div>
+          <div class="flower"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -40,12 +57,16 @@ export default {
   data() {
     return {
       isHidden: false,
+      isDropped: false,
       types: [{name: 'Blume'}, {name: 'Basis'}, {name: 'Ovales Gras'}, {name: 'Winziges Extra'}, {name: 'Langes Gras'}, {name: 'Glatt'}],
     }
   },
   methods: {
     rotate() {
       this.isHidden = !this.isHidden;
+    },
+    drop() {
+      this.isDropped = !this.isDropped;
     }
   },
   mounted() {
@@ -72,6 +93,10 @@ export default {
       border-bottom: $hr;
     }
   }
+  .content {
+    width: 74%;
+    padding: 1em;
+  }
 }
 
 .categories-title {
@@ -80,36 +105,16 @@ export default {
   justify-content: space-between;
   padding-bottom: 0.5em;
   cursor: pointer;
-
-  .dropdown-arrow {
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-top: 3px;
-    margin-right: 1.5em;
-  }
-
-  .up {
-    transition: ease-in 200ms;
-    transform: rotate(-135deg);
-  }
-
-  .down {
-    transition: ease-in 200ms;
-    transform: rotate(45deg);
-  }
 }
 
 .categories-list {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  transition: ease-in-out 200ms;
-
+  transition: ease-in-out 120ms;
   .container {
     padding: 0.25em 2.25em;
-
+    cursor: pointer;
     input {
       visibility: hidden;
       display: grid;
@@ -126,7 +131,7 @@ export default {
       border-radius: 4px;
       display: inline-block;
       place-content: center;
-      transition: ease-in-out 200ms;
+      transition: ease-in-out 120ms;
       position: relative;
     }
 
@@ -138,14 +143,14 @@ export default {
       width: 0.34em;
       height: 0.34em;
       transform: scale(0);
-      transition: 200ms transform ease-in-out;
-      box-shadow: inset 1em 1em white;
       border-radius: 1px;
+      box-shadow: inset 1em 1em white;
+      transition: 120ms transform ease-in-out;
     }
 
     input[type=checkbox]:checked+.checkmark {
       background: rgba(0, 0, 0, 0.8);
-      transition: ease-in-out 200ms;
+      transition: ease-in-out 120ms;
     }
 
     input[type=checkbox]:checked+.checkmark:before {
@@ -165,6 +170,84 @@ export default {
 .price-range {
   .price-slider {
     padding: 2.4em;
+  }
+}
+
+.flowers-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.7em 0.5em;
+  .flowers-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0.75em;
+  }
+  .flowers-sort {
+    cursor: pointer;
+    .dropdown-title {
+      padding: 0 1em;
+    }
+  }
+}
+
+.flowers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 0.4em 1.5em;
+  .flower {
+    width: 295px;
+    height: 345px;
+    border: $hr;
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    :hover::before {
+      opacity: 1;
+    }
+    ::before,
+    ::after {
+      border-radius: inherit;
+      content: "";
+      height: 100%;
+      left: 0px;
+      opacity: 0;
+      position: absolute;
+      top: 0px;
+      transition: opacity 500ms;
+      width: 100%;
+    }
+
+    ::before {
+      background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+      );
+      z-index: 3;
+    }
+
+    ::after {  
+      background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.4),
+        transparent 40%
+      );
+      z-index: 1;
+    }
+
+    > .card-content {
+      background-color: white;
+      border-radius: inherit;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      inset: 1px;
+      padding: 10px;
+      position: absolute;
+      z-index: 2;
+    }
   }
 }
 </style>
