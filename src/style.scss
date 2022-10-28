@@ -2,45 +2,72 @@ $bg-color: rgba(128, 128, 128, 0.16);
 $hr: 2px solid $bg-color;
 
 body {
-    background-color: $bg-color;
-    height: 100vh;
-    min-width: 320px;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Helvetica, sans-serif;
+  background-color: $bg-color;
+  height: 100vh;
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Helvetica, sans-serif;
 }
 
 #app {
-    background-color: #ffffff;
-    width: 96%;
-    height: 96%;
-    margin: 0;
-    padding: 0;
-    border-radius: 20px;
+  background-color: #ffffff;
+  width: 96%;
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+  max-width: 960px;
+  position: absolute;
+  top: 1em;
 }
 
 .main-header {
-    font-size: 1.22rem;
-    font-weight: bold;
-    padding: 2em 2em 1.2em;
-    border-bottom: $hr;
-    margin: 0;
+  font-size: 1.22rem;
+  font-weight: bold;
+  padding: 2em 2em 1.2em;
+  border-bottom: $hr;
+  margin: 0;
 }
 
-.main, .filters, .price-range {
-    display: flex;
-    flex-direction: column;
+.main,
+.filters,
+.price-range,
+.content {
+  display: flex;
+  flex-direction: column;
 }
 
 .lighter {
-    padding: 0.8em 2.4em;
-    color: rgb(100, 100, 100);
-    font-weight: bold;
-    font-size: 0.95rem;
+  padding: 0.8em 2.4em;
+  color: rgb(100, 100, 100);
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.dropdown-arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-top: 3px;
+  margin-right: 1.5em;
+}
+
+.up {
+  transition: ease-in 120ms;
+  transform: rotate(-135deg);
+}
+
+.down {
+  transition: ease-in 120ms;
+  transform: rotate(45deg);
+}
+
+#cards:hover > .card::after {
+  opacity: 1;
 }
 
 .v-enter-active,
@@ -51,4 +78,13 @@ body {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 750px) {
+  .categories-title, .categories-list {
+    overflow: hidden;
+  }
+  .lighter {
+    padding: 0.5em;
+  } 
 }
