@@ -10,35 +10,10 @@
         </div>
         <Transition>
           <div class="categories-list filter" v-if="!isHidden">
-            <label class="container">
-              <input type="checkbox" id="ct1" value="blume" />
+            <label v-for="(t, index) in types" class="container">
+              <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')" />
               <span class="checkmark"></span>
-              Blume
-            </label>
-            <label class="container">
-              <input type="checkbox" id="ct2" value="basis" />
-              <span class="checkmark"></span>
-              Basis
-            </label>
-            <label class="container">
-              <input type="checkbox" id="ct3" value="ovalesGras" />
-              <span class="checkmark"></span>
-              Ovales Gras
-            </label>
-            <label class="container">
-              <input type="checkbox" id="ct4" value="winzigesExtra" />
-              <span class="checkmark"></span>
-              Winziges Extra
-            </label>
-            <label class="container">
-              <input type="checkbox" id="ct5" value="langesGras" />
-              <span class="checkmark"></span>
-              Langes Gras
-            </label>
-            <label class="container">
-              <input type="checkbox" id="ct6" value="glatt" />
-              <span class="checkmark"></span>
-              Glatt
+              {{ t.name }}
             </label>
           </div>
         </Transition>
@@ -65,7 +40,7 @@ export default {
   data() {
     return {
       isHidden: false,
-      types: null
+      types: [{name: 'Blume'}, {name: 'Basis'}, {name: 'Ovales Gras'}, {name: 'Winziges Extra'}, {name: 'Langes Gras'}, {name: 'Glatt'}],
     }
   },
   methods: {
