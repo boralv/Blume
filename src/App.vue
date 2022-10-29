@@ -9,8 +9,9 @@
       </div>
       <Transition>
         <div class="categories-list filter" v-if="!isHidden">
-          <label v-for="(t, index) in types" class="container" >
-            <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')" v-model="checkedTypes" @click="update" />
+          <label v-for="(t, index) in types" class="container">
+            <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')"
+              v-model="checkedTypes" @click="update" />
             <span class="checkmark"></span>
             {{ t.name }}
           </label>
@@ -21,10 +22,8 @@
         <div class="price-slider">
           <input data-role="doubleslider" class="ultra-thin cycle-marker" id="slider" data-min="1" data-max="10"
             data-hint-position-min="bottom" data-hint-position-max="bottom" data-hint-always="true"
-            data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold"
-            data-on-move="$('.hint').each(function() {var str = $(this).html();
-                          if(!str.includes('$')){$(this).html('$ ' + str);}});"
-            @click="update" />
+            data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold" data-on-move="$('.hint').each(function() {var str = $(this).html();
+                          if(!str.includes('$')){$(this).html('$ ' + str);}});" @click="update" />
         </div>
       </div>
     </div>
@@ -37,7 +36,9 @@
         </div>
       </div>
       <div class="flowers-grid" id="cards" data-role="list">
-        <div v-for="blume in blumen" v-show="(checkedTypes[0]==null||checkedTypes.includes(blume.type.toLowerCase().split(' ').join('')))&&blume.price>=min&&blume.price<=max" :key="blume.id" class="flower">
+        <div v-for="blume in blumen"
+          v-show="(checkedTypes[0] == null || checkedTypes.includes(blume.type.toLowerCase().split(' ').join(''))) && blume.price >= min && blume.price <= max"
+          :key="blume.id" class="flower">
           <div :key="blume.name" :id="blume.id" class="card-content">
             <div class="card-info-wrapper">
               <span class="flower-accent"></span>
@@ -45,7 +46,7 @@
               <h3 class="flower-name">{{ blume.name }}</h3>
             </div>
             <div class="card-image">
-              <img :src="'/src/images/' + blume.picture" />
+              <img :src="'/src/images/' + blume.picture" class="flower-img" :alt="blume.name" />
             </div>
             <div class="card-footer">
               <span class="price-title">Price</span>
@@ -56,7 +57,7 @@
       </div>
     </div>
   </div>
-  <footer>Created by Boriss Dvornikovs</footer>
+  <footer class="footer">Created by Boriss Dvornikovs</footer>
 </template>
 
 <script>
@@ -259,13 +260,13 @@ export default {
     }
 
     &::before {
-      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(92, 107, 92, 0.08),
+      background: radial-gradient(700px circle at var(--mouse-x) var(--mouse-y), rgba(92, 107, 92, 0.08),
           transparent 40%);
       z-index: 3;
     }
 
     &::after {
-      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(97, 109, 95, 0.4),
+      background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(97, 109, 95, 0.4),
           transparent 40%);
       z-index: 1;
     }

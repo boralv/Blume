@@ -6,7 +6,7 @@ createApp(App).mount('#app')
 
 // Sometimes need to refresh for this to work
 document.getElementById("cards").onmousemove = e => {
-    for(const card of document.getElementsByClassName("flower")) {
+    for (const card of document.getElementsByClassName("flower")) {
         const rect = card.getBoundingClientRect(),
             x = e.clientX - rect.left,
             y = e.clientY - rect.top;
@@ -16,26 +16,26 @@ document.getElementById("cards").onmousemove = e => {
 }
 
 // Need to wrap the function for 'document ready'
-$(function() {
-    $(".hint").each(function() {
-        var str = $( this ).html();
-        if(!str.includes('$')){
-            $( this ).html( '$ ' + str );
+$(function () {
+    $(".hint").each(function () {
+        var str = $(this).html();
+        if (!str.includes('$')) {
+            $(this).html('$ ' + str);
         }
     });
 });
 
 // Metro UI has special 'selected' class fml
-$('.flower').click(function(){
-	$(this).toggleClass('itslit');
+$('.flower').click(function () {
+    $(this).toggleClass('itslit');
 })
 
 var clicked = 0
-$('.main-header').click(function(){
-	clicked++;
-    if (clicked>=8) {
+$('.main-header').click(function () {
+    clicked++;
+    if (clicked >= 8) {
         $('#app').toggleClass('wooo');
-    } 
+    }
 })
 
 var colors = blumen.map(translateColors);
