@@ -35,7 +35,7 @@
           <span class="dropdown-arrow" :class="[isDropped ? 'up' : 'down']"></span>
         </div>
       </div>
-      <div class="flowers-grid" id="cards" data-role="list">
+      <div class="flowers-grid" id="cards" data-role="list" data-sort-class="flower-price">
         <div v-for="blume in blumen"
           v-show="(checkedTypes[0] == null || checkedTypes.includes(blume.type.toLowerCase().split(' ').join(''))) && blume.price >= min && blume.price <= max"
           :key="blume.id" class="flower">
@@ -50,7 +50,7 @@
             </div>
             <div class="card-footer">
               <span class="price-title">Price</span>
-              <span class="flower-price">$ {{ blume.price }}</span>
+              <span class="flower-price" >$ {{ blume.price }}</span>
             </div>
           </div>
         </div>
