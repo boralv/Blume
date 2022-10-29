@@ -1,5 +1,5 @@
+import { blumen } from './blumen.js'
 import { createApp } from 'vue'
-import data from './data.js'
 import App from './App.vue'
 
 createApp(App).mount('#app')
@@ -20,7 +20,7 @@ $(function() {
     $(".hint").each(function() {
         var str = $( this ).html();
         if(!str.includes('$')){
-            $( this ).html( "$" + str );
+            $( this ).html( '$ ' + str );
         }
     });
 });
@@ -38,7 +38,7 @@ $('.main-header').click(function(){
     } 
 })
 
-var colors = data.map(translateColors);
+var colors = blumen.map(translateColors);
 function translateColors(flower) {
     switch (flower.color) {
         case 'weiss':
@@ -76,8 +76,7 @@ function translateColors(flower) {
     }
 }
 
-colors.forEach(setAccent);
-function setAccent(color, index) {
+colors.forEach((color, index) => {
     const accent = document.getElementsByClassName("flower-accent")[index];
     accent.style.setProperty("--accent-color", color);
-}
+});

@@ -1,4 +1,3 @@
-<!-- TODO: responsive refinement, dropdown sort, filter logic-->
 <template>
   <h1 class="main-header">Blume</h1>
   <div class="wrapper">
@@ -10,8 +9,8 @@
       </div>
       <Transition>
         <div class="categories-list filter" v-if="!isHidden">
-          <label v-for="(t, index) in types" class="container">
-            <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')" />
+          <label v-for="(t, index) in types" class="container" >
+            <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')" v-model="checkedTypes" @click="update" />
             <span class="checkmark"></span>
             {{ t.name }}
           </label>
@@ -20,10 +19,12 @@
       <div class="price-range filter">
         <span class="price-title lighter">Price Range</span>
         <div class="price-slider">
-          <input data-role="doubleslider" class="ultra-thin cycle-marker" data-min="1" data-max="10"
+          <input data-role="doubleslider" class="ultra-thin cycle-marker" id="slider" data-min="1" data-max="10"
             data-hint-position-min="bottom" data-hint-position-max="bottom" data-hint-always="true"
             data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold"
-            data-on-move="$('.hint').each(function() {var str = $(this).html();if(!str.includes('$')){$(this).html('$ ' + str);}});" />
+            data-on-move="$('.hint').each(function() {var str = $(this).html();
+                          if(!str.includes('$')){$(this).html('$ ' + str);}});"
+            @click="update" />
         </div>
       </div>
     </div>
@@ -35,9 +36,9 @@
           <span class="dropdown-arrow" :class="[isDropped ? 'up' : 'down']"></span>
         </div>
       </div>
-      <div class="flowers-grid" id="cards">
-        <div v-for="blume in blumen" class="flower">
-          <div :key="blume.name" :id="`bl${blume.id}`" class="card-content">
+      <div class="flowers-grid" id="cards" data-role="list">
+        <div v-for="blume in blumen" v-show="(checkedTypes[0]==null||checkedTypes.includes(blume.type.toLowerCase().split(' ').join('')))&&blume.price>=min&&blume.price<=max" :key="blume.id" class="flower">
+          <div :key="blume.name" :id="blume.id" class="card-content">
             <div class="card-info-wrapper">
               <span class="flower-accent"></span>
               <span class="flower-type">{{ blume.type }}</span>
@@ -59,14 +60,17 @@
 </template>
 
 <script>
-import data from './data.js';
+import { blumen } from './blumen.js';
 export default {
   data() {
     return {
       isHidden: false,
       isDropped: false,
       types: [{ name: 'Blume' }, { name: 'Basis' }, { name: 'Ovales Gras' }, { name: 'Winziges Extra' }, { name: 'Langes Gras' }, { name: 'Glatt' }],
-      blumen: data,
+      blumen,
+      checkedTypes: [],
+      min: 1,
+      max: 10
     }
   },
   methods: {
@@ -75,7 +79,16 @@ export default {
     },
     drop() {
       this.isDropped = !this.isDropped;
-    }
+    },
+    update() {
+      this.min = $('.hint-min').html().replace("$", "").trim();
+      this.max = $('.hint-max').html().replace("$", "").trim();
+    },
+  },
+  mounted() {
+    setInterval(() => {
+      this.update();
+    }, 500);
   }
 } 
 </script>
@@ -153,7 +166,7 @@ export default {
       width: 0.35em;
       height: 0.35em;
       transform: scale(0);
-      border-radius: 2px;
+      border-radius: 1px;
       box-shadow: inset 1em 1em white;
       transition: 120ms transform ease-in-out;
     }
@@ -169,11 +182,11 @@ export default {
   }
 
   :nth-child(1) {
-    padding-top: 0.8em;
+    padding-top: 1em;
   }
 
   :nth-child(6) {
-    padding-bottom: 0.8em;
+    padding-bottom: 1em;
   }
 }
 
@@ -220,10 +233,8 @@ export default {
   }
 
   .flower {
-    display: block;
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(128, 128, 128, 0.16);
-    transition: border 120ms ease-in-out 0s;
     width: 284px;
     height: 335px;
     border-radius: 14px;
@@ -248,13 +259,13 @@ export default {
     }
 
     &::before {
-      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(101, 124, 100, 0.08),
+      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(92, 107, 92, 0.08),
           transparent 40%);
       z-index: 3;
     }
 
     &::after {
-      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(101, 124, 100, 0.4),
+      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(97, 109, 95, 0.4),
           transparent 40%);
       z-index: 1;
     }

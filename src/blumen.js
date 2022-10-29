@@ -19,7 +19,7 @@ fetch(url)
   .then((response) => response.json())
   .then((data) => console.log(data));
 */
-var data =
+var blumen =
 [
     {
         "id": 1,
@@ -383,4 +383,4 @@ var data =
     }
 ]
 
-export default data;
+export { blumen };
