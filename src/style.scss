@@ -37,7 +37,6 @@ body {
   border: 2px outset rgba(255, 167, 38, .3);
 }
 
-.main,
 .filters,
 .price-range,
 .content {
@@ -93,29 +92,46 @@ footer {
   opacity: 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 990px) {
 
   .empty {
     display: none;
+  }
+
+  .container {
+    transition: padding 200ms ease-in-out 0s;
+    padding: 0 0.5em;
   }
 }
 
 @media screen and (max-width: 750px) {
   
   .lighter {
-    padding: 0.5em;
+    transition: padding 200ms ease-in-out 0s;
+    padding: 0.4em 0.8em;
   }
-  
+
   .container {
-    padding: 0 0 0 0.5em;
+    font-size: 0.95em;
   }
 }
 
-@media screen and (max-width: 600px) {
-
+@media screen and (max-width: 640px) {
+  
   .flowers-sort .dropdown-arrow {
     position: absolute;
-    top: 5px;
-    left: 0;
+    top: 2px;
+    left: -2px;
+  }
+  
+  .container {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 602px) {
+
+  :root {
+    font-size: 13px;
   }
 }
