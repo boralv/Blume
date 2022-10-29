@@ -22,6 +22,7 @@ body {
   max-width: 960px;
   position: absolute;
   top: 1em;
+  box-shadow: 2px 1px 8px lightgray;
 }
 
 .main-header {
@@ -33,10 +34,7 @@ body {
   cursor: pointer;
 }
 
-.wooo {
-  border: 2px outset rgba(255, 167, 38, .3);
-}
-
+#app,
 .filters,
 .price-range,
 .content {
@@ -80,6 +78,10 @@ footer {
   font-size: 0.9rem;
   color:rgba(100, 100, 100, 0.7);
   padding: 0.5em 0 2em;
+}
+
+.wooo {
+  border: 2px outset rgba(255, 167, 38, .3);
 }
 
 .v-enter-active,
