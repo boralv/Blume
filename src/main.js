@@ -30,6 +30,14 @@ $('.flower').click(function () {
     $(this).toggleClass('itslit');
 })
 
+// Metro UI sort needs 'ul' and >'li' elements
+$('.flower-select').change(function () {
+    var val = $('.flowers-sort li.active').attr('data-value');
+    if (val == undefined) { return; }
+    $('#flowers').data('list').sorting(val, 'asc', true);
+})
+
+// top secret
 var clicked = 0
 $('.main-header').click(function () {
     clicked++;
