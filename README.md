@@ -1,6 +1,6 @@
 # Blume
 
-This project was developed using Vue 3 in Vite and [Sass](https://sass-lang.com/).
+This project was developed using Vue 3 in Vite and [Sass](https://sass-lang.com/) and [Metro UI](https://metroui.org.ua/intro.html).
 
 ## Recommended IDE Setup
 
