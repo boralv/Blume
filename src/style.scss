@@ -14,6 +14,8 @@ body {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
   background-color: #ffffff;
   width: 96%;
   margin: 0;
@@ -22,19 +24,18 @@ body {
   max-width: 960px;
   position: absolute;
   top: 1em;
-  box-shadow: 2px 1px 8px lightgray;
+  box-shadow: 1px 2px 8px lightgray;
 }
 
 .main-header {
   font-size: 1.22rem;
   font-weight: bold;
-  padding: 2em 2em 1.2em;
+  padding: 1.8em 1.8em 1.2em;
   border-bottom: $hr;
   margin: 0;
   cursor: pointer;
 }
 
-#app,
 .filters,
 .price-range,
 .content {
@@ -94,7 +95,7 @@ body {
   opacity: 0;
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 991px) {
 
   .empty {
     display: none;
@@ -131,9 +132,9 @@ body {
   }
 }
 
-@media screen and (max-width: 602px) {
+@media screen and (max-width: 600px) {
 
-  :root {
-    font-size: 13px;
+  .container {
+    font-size: 0.85em;
   }
 }
