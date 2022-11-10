@@ -10,7 +10,8 @@
       <Transition>
         <div class="categories-list filter" v-if="!isHidden">
           <label v-for="(t, index) in types" class="container">
-            <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')" v-model="checkedTypes" @click="update" />
+            <input type="checkbox" :key="t.name" :id="`cb${index}`" :value="t.name.toLowerCase().split(' ').join('')"
+              v-model="checkedTypes" @click="update" />
             <span class="checkmark"></span>
             {{ t.name }}
           </label>
@@ -21,8 +22,9 @@
         <div class="price-slider">
           <input data-role="doubleslider" id="slider" class="ultra-thin cycle-marker" data-min="1" data-max="10"
             data-hint-position-min="bottom" data-hint-position-max="bottom" data-hint-always="true"
-            data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold" 
-            data-on-move="$('.hint').each(function() {var str = $(this).html();if(!str.includes('$')){$(this).html('$ ' + str);}});" @click="update" />
+            data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold"
+            data-on-move="$('.hint').each(function() {var str = $(this).html();if(!str.includes('$')){$(this).html('$ ' + str);}});"
+            @click="update" />
         </div>
       </div>
     </div>
@@ -30,8 +32,8 @@
       <div class="flowers-title">
         <h2 class="flowers-header">New Arrivals</h2>
         <div class="flowers-sort">
-          <select data-role="select" data-filter="false" 
-          data-prepend="Sort By:" class="flower-select dropdown-title lighter">
+          <select data-role="select" data-filter="false" data-prepend="Sort By:"
+            class="flower-select dropdown-title lighter">
             <option value="flower-price" selected>Price</option>
             <option value="flower-name">Name</option>
             <option value="flower-type">Type</option>
@@ -41,8 +43,8 @@
       <div id="cards" class="flowers-grid">
         <ul id="flowers" data-role="list" data-sort-class="flower-price" data-sort-dir="asc"
           data-cls-list="unstyled-list row flex-justify-center">
-          <li v-for="blume in blumen" 
-          v-show="(checkedTypes[0] == null || checkedTypes.includes(blume.type.toLowerCase().split(' ').join(''))) && blume.price >= min && blume.price <= max">
+          <li v-for="blume in blumen"
+            v-show="(checkedTypes[0] == null || checkedTypes.includes(blume.type.toLowerCase().split(' ').join(''))) && blume.price >= min && blume.price <= max">
             <div :key="blume.id" :id="blume.id" class="flower">
               <div :key="blume.name" class="card-content">
                 <div class="card-info-wrapper">
@@ -123,6 +125,7 @@ export default {
   .content {
     width: 70%;
     padding: 1em;
+    justify-self: center;
   }
 }
 
