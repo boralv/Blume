@@ -28,3 +28,4 @@ coverage
 *.sln
 *.sw?
 src/Testing.vue
+template.png

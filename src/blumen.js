@@ -1,8 +1,10 @@
 // ERROR: No 'Access-Control-Allow-Origin' header is present on the requested resource
-// var url = 'https://blumlinge2.herokuapp.com/api/smallbouquet/';
-// $.get(url, function(data) {
+var url = 'https://blumlinge2.herokuapp.com/api/smallbouquet/';
+// $.get(url).then(
+//     function(data) {
 //     console.log(data);
-// });
+//     }
+// )
 
 var blumen =
 [
