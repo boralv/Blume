@@ -4,7 +4,6 @@ $hr: 2px solid $bg-color;
 body {
   background-color: $bg-color;
   height: 100vh;
-  min-width: 320px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -100,6 +99,10 @@ body {
   .empty {
     display: none;
   }
+
+  .container {
+    padding-left: 1.5em;
+  }
 }
 
 @media screen and (max-width: 750px) {
@@ -143,8 +146,14 @@ body {
     }
   }
 
-  .price-slider {
-    width: 55%;
+  .price-range {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .price-slider {
+      width: 52.5%;
+    }
   }
 }
 
@@ -155,8 +164,46 @@ body {
     top: 2px;
     left: -2px;
   }
+}
+
+@media screen and (max-width: 450px) {
+  * {
+    transition: 200ms ease-in-out;
+  }
 
   .container {
-    font-size: 0.9em;
+    &:nth-of-type(odd) {
+      padding-left: 2em;
+      padding-right: .3em;
+    }
+
+    &:nth-of-type(even) {
+      padding-left: .3em;
+      padding-right: .5em;
+    }
+
+    .checkmark {
+      top: 3px;
+    }
+  }
+
+  .flowers-title {
+    display: flex;
+    flex-direction: column;
+
+    h2.flowers-header {
+      margin-bottom: 13px;
+      transition: 200ms ease;
+    }
+  }
+
+  .price-range {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .price-slider {
+      width: 220px;
+      max-width: 90vw;
+    }
   }
 }

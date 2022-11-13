@@ -143,61 +143,62 @@ export default {
   flex-direction: column;
   font-weight: 600;
   transition: ease-in-out 120ms;
+}
 
-  .container {
-    input {
-      visibility: hidden;
-      display: grid;
-      height: 0;
-      width: 0;
-      overflow: hidden;
-    }
-
-    .checkmark {
-      height: 1em;
-      width: 1em;
-      margin-right: 0.5em;
-      border: 1px solid rgba(128, 128, 128, 0.3);
-      border-radius: 4px;
-      display: inline-block;
-      place-content: center;
-      transition: ease-in-out 120ms;
-      position: relative;
-      top: 1px;
-      left: -1px;
-    }
-
-    .checkmark:before {
-      content: "";
-      position: absolute;
-      top: 0.25em;
-      left: 0.25em;
-      width: 0.4em;
-      height: 0.4em;
-      transform: scale(0);
-      border-radius: 1px;
-      box-shadow: inset 1em 1em white;
-      transition: 120ms transform ease-in-out;
-    }
-
-    input[type=checkbox]:checked+.checkmark {
-      background: rgba(0, 0, 0, 0.8);
-      transition: ease-in-out 120ms;
-    }
-
-    input[type=checkbox]:checked+.checkmark:before {
-      transform: scale(1);
-    }
+.container {
+  input {
+    visibility: hidden;
+    display: grid;
+    height: 0;
+    width: 0;
+    overflow: hidden;
   }
 
-  :nth-child(1) {
+  span {
+    height: 16px;
+    width: 16px;
+    margin-right: 0.5em;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+    display: inline-block;
+    place-content: center;
+    transition: ease-in-out 120ms;
+    position: relative;
+    top: 1px;
+    left: -1px;
+  }
+
+  .checkmark:before {
+    content: "";
+    position: absolute;
+    top: 0.25em;
+    left: 0.25em;
+    width: 0.4em;
+    height: 0.4em;
+    transform: scale(0);
+    border-radius: 1px;
+    box-shadow: inset 1em 1em white;
+    transition: 120ms transform ease-in-out;
+  }
+
+  input[type=checkbox]:checked+.checkmark {
+    background: rgba(0, 0, 0, 0.8);
+    transition: ease-in-out 120ms;
+  }
+
+  input[type=checkbox]:checked+.checkmark:before {
+    transform: scale(1);
+  }
+
+  &:nth-child(1) {
     padding-top: 1em;
   }
 
-  :nth-child(6) {
+  &:nth-child(6) {
     padding-bottom: 1em;
   }
 }
+
 
 .price-range {
 
@@ -226,13 +227,23 @@ export default {
 
 .flowers-sort {
   cursor: pointer;
+  margin-right: 1.3em;
 
   .dropdown-title,
   .drop-container {
     padding: 0;
-    border-radius: 0px;
+    border-radius: 6px;
     border: 1px solid $bg-color;
     box-shadow: 1px 2px 10px $bg-color;
+
+    .prepend {
+      border-radius: inherit;
+    }
+
+    ul,
+    li {
+      border-radius: 3px;
+    }
   }
 
   .select .option-list li.active {
