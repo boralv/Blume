@@ -20,11 +20,7 @@
       <div class="price-range filter">
         <span class="price-title lighter">Price Range</span>
         <div class="price-slider">
-          <input data-role="doubleslider" id="slider" class="ultra-thin cycle-marker" data-min="1" data-max="10"
-            data-hint-position-min="bottom" data-hint-position-max="bottom" data-hint-always="true"
-            data-cls-complete="bg-dark" data-cls-hint="bg-light fg-dark text-bold"
-            data-on-move="$('.hint').each(function() {var str = $(this).html();if(!str.includes('$')){$(this).html('$ ' + str);}});"
-            @click="update" />
+          <el-slider v-model="price" :format-tooltip="formatTooltip" placement="bottom" range :max="10" />
         </div>
       </div>
     </div>
@@ -44,7 +40,7 @@
         <ul id="flowers" data-role="list" data-sort-class="flower-price" data-sort-dir="asc"
           data-cls-list="unstyled-list row flex-justify-center">
           <li v-for="blume in blumen"
-            v-show="(checkedTypes[0] == null || checkedTypes.includes(blume.type.toLowerCase().split(' ').join(''))) && blume.price >= min && blume.price <= max">
+            v-show="(checkedTypes[0] == null || checkedTypes.includes(blume.type.toLowerCase().split(' ').join(''))) && blume.price >= price[0] && blume.price <= price[1]">
             <div :key="blume.id" :id="blume.id" class="flower">
               <div :key="blume.name" class="card-content">
                 <div class="card-info-wrapper">
@@ -69,6 +65,16 @@
   <footer class="footer">Created by Boriss Dvornikovs</footer>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+
+const price = ref([0,10])
+
+const formatTooltip = (val) => {
+  return '$'+ val
+}
+</script>
+
 <script>
 import { blumen } from './blumen.js';
 export default {
@@ -77,25 +83,14 @@ export default {
       isHidden: false,
       isDropped: false,
       types: [{ name: 'Blume' }, { name: 'Basis' }, { name: 'Ovales Gras' }, { name: 'Winziges Extra' }, { name: 'Langes Gras' }, { name: 'Glatt' }],
-      blumen,
+      blumen: Array,
       checkedTypes: [],
-      min: 1,
-      max: 10
     }
   },
   methods: {
     rotate() {
       this.isHidden = !this.isHidden;
     },
-    update() {
-      this.min = $('.hint-min').html().replace("$", "").trim();
-      this.max = $('.hint-max').html().replace("$", "").trim();
-    }
-  },
-  mounted() {
-    setInterval(() => {
-      this.update();
-    }, 500);
   }
 } 
 </script>
