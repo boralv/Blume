@@ -1,9 +1,7 @@
 // Temporary solution for CORS -> https://cors-anywhere.herokuapp.com/
-// var url = 'https://blumlinge2.herokuapp.com/api/smallbouquet/';
-// const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-// const blumen = await response.json();
-
-const blumen = [
+var url = 'https://blumlinge2.herokuapp.com/api/smallbouquet/';
+const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+const blumen = response.status==200 ? await response.json() : [
     {
         "id": 1,
         "name": "Gypsophila weiss",
