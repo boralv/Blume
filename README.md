@@ -2,9 +2,12 @@
 
 This project was developed using Vue 3 in Vite and [Sass](https://sass-lang.com/) and [Metro UI](https://metroui.org.ua/intro.html).
 
+![Website Image](.\template.png)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
