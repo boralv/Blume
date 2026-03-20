@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "mkdir .\\dist\\src\\images && copy .\\src\\images\\* .\\dist\\src\\images" 
   },
   "dependencies": {
     "element-plus": "^2.2.22",
